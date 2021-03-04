@@ -1,0 +1,7 @@
+run:
+    deadline: 5m
+    issues-exit-code: 1
+
+linters-settings:
+    gocyclo:
+      min-complexity: 10
