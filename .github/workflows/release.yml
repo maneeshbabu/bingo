@@ -49,6 +49,11 @@ jobs:
     needs: [lint, test]
     steps:
         - uses: actions/checkout@v1
+        - name: Get the version
+          id: vars
+          run: echo ::set-output name=tag::$(echo ${GITHUB_REF:10})
+        - name: Update version
+          run: echo ${{steps.vars.outputs.tag}} > 'VERSION'
         - uses: akhileshns/heroku-deploy@v3.12.12
           with:
             heroku_api_key: ${{secrets.HEROKU_API_KEY}}
