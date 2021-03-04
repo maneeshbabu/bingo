@@ -15,8 +15,7 @@ func main() {
 	}
 
 	e := echo.New()
-	e.Static("/", "vue-app/dist")
-	e.Static("/vue-org", "vue-app")
+	e.Static("/", "frontend/dist")
 
 	e.GET("/hello", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Hello, World!")
