@@ -41,3 +41,11 @@ jobs:
       with:
         name: coverage
         path: ${{ matrix.platform }}-coverage.html
+    - name: "Upload coverage to Codecov"
+      uses: codecov/codecov-action@v1
+      with:
+        fail_ci_if_error: true
+    - name: Generate Coverage Report
+      run: go test -race -coverprofile=coverage.txt -covermode=atomic
+    - name: Generate Coverage Report
+      run: go tool cover -html=${{ matrix.platform }}-coverage.out -o ${{ matrix.platform }}-coverage.html
